@@ -95,4 +95,33 @@ const films = [
     titre: "Lucy",
     embed: `<iframe src="https://www.tokyvideo.com/br/embed/634969" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/br/video/lucy-2?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Lucy</a> by <a href="https://www.tokyvideo.com/br?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
   }
+,
+  {
+    titre: "Avengers : L'Ère d'Ultron",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/881055" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/avengers-l-ere-d-ultron-2015-3?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">avengers:l'ere d'ultron (2015)</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "X-Men",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/754797" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/2000-x-men-0050?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">2000 - X men (0050)</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "X-Men Origins: Wolverine",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/731795" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/x-men-origins-wolverine-2?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">X-Men Origins - Wolverine</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "Wolverine : Le Combat de l'immortel",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/332327" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/wolverine-le-combat-de-l-immortel-vf?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Wolverine  Le combat de l'immortel. vf</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "Logan",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/332353" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/logan-vf?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Logan. vf</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "Tron : L'Héritage",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/165793" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/tron-l-heritage?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Tron l'héritage</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "Tron : Ares",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/874608" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/tron-ares-5?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Tron : Ares</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  }
 ];
