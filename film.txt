@@ -55,4 +55,12 @@ const films = [
     titre: "OSS 117 : Rio ne répond plus",
     embed: `<iframe src="https://www.tokyvideo.com/fr/embed/797465" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/oss-117-rio-ne-repond-plus-3?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">OSS 117 : Rio ne répond plus</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
   }
+ {
+    titre: "Bienvenue chez chti",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/764418" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/bienvenue-chez-les-ch-tis-2008-2?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Bienvenue chez les Ch'tis ( 2008 )</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>
+  } 
+ {
+    titre: "King Kong",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/784025" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/king-kong-1976-2?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">King Kong ( 1976 )</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>
+  }
 ];
