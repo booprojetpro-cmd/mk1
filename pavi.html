@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1ea">
+  <meta name="description" content="Installez Pavillon Noir sur Mac, Windows ou Android, ou continuez sur le web.">
+  <title>Installer Pavillon Noir</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f1ea;
+      --surface: rgba(255, 255, 255, 0.72);
+      --ink: #10100f;
+      --muted: #74716b;
+      --line: rgba(16, 16, 15, 0.13);
+      --line-strong: rgba(16, 16, 15, 0.24);
+      --shadow: 0 18px 60px rgba(33, 29, 22, 0.08);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      background: var(--paper);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.92), transparent 42rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      opacity: 0.22;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .sprite {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .page {
+      display: grid;
+      min-height: 100vh;
+      min-height: 100dvh;
+      place-items: center;
+      padding: clamp(26px, 5vh, 56px) 18px;
+    }
+
+    .installer {
+      width: min(100%, 640px);
+      text-align: center;
+      animation: enter 760ms var(--ease) both;
+    }
+
+    .brand-image {
+      display: block;
+      width: min(100%, 490px);
+      height: clamp(142px, 24vh, 218px);
+      margin: 0 auto clamp(18px, 3vh, 28px);
+      object-fit: contain;
+      object-position: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .intro {
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.71rem;
+      font-weight: 720;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.75rem, 4vw, 2.28rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+
+    .intro-copy {
+      max-width: 440px;
+      margin: 10px auto 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .main-button {
+      display: grid;
+      min-height: 66px;
+      width: 100%;
+      grid-template-columns: 26px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 12px 17px;
+      color: var(--ink);
+      background: var(--surface);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+      cursor: pointer;
+      transition:
+        border-color 220ms ease,
+        background-color 220ms ease,
+        box-shadow 280ms ease,
+        transform 280ms var(--ease);
+    }
+
+    .main-button:hover {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 30px rgba(33, 29, 22, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .main-button:active {
+      transform: translateY(0) scale(0.994);
+    }
+
+    .main-button:focus-visible,
+    .choice:focus-visible,
+    .secondary-link:focus-visible {
+      outline: 3px solid rgba(16, 16, 15, 0.17);
+      outline-offset: 3px;
+    }
+
+    .main-button.primary {
+      border-color: var(--ink);
+      color: #fff;
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .main-button.primary:hover {
+      border-color: #2b2b29;
+      background: #242422;
+      box-shadow: 0 18px 42px rgba(20, 18, 15, 0.18);
+    }
+
+    .button-copy {
+      min-width: 0;
+    }
+
+    .button-title,
+    .button-meta {
+      display: block;
+    }
+
+    .button-title {
+      overflow: hidden;
+      font-size: 0.94rem;
+      font-weight: 680;
+      letter-spacing: -0.012em;
+      line-height: 1.24;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .button-meta {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.25;
+    }
+
+    .primary .button-meta {
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      flex: none;
+      fill: currentColor;
+    }
+
+    .icon.small {
+      width: 15px;
+      height: 15px;
+    }
+
+    .end-icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.52;
+      transition: transform 300ms var(--ease), opacity 180ms ease;
+    }
+
+    .main-button:hover .end-icon {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .platform-grid .main-button {
+      min-height: 72px;
+    }
+
+    .mac-group {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--surface);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+      transition:
+        border-color 220ms ease,
+        background-color 220ms ease,
+        box-shadow 320ms ease,
+        transform 280ms var(--ease);
+    }
+
+    .mac-group:hover,
+    .mac-group.is-open {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 16px 42px rgba(33, 29, 22, 0.08);
+    }
+
+    .mac-group:not(.is-open):hover {
+      transform: translateY(-2px);
+    }
+
+    .mac-toggle {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .mac-toggle:hover {
+      background: transparent;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .mac-toggle .end-icon {
+      transition: transform 420ms var(--ease), opacity 180ms ease;
+    }
+
+    .mac-toggle:hover .end-icon {
+      transform: translateY(2px);
+    }
+
+    .mac-group.is-open .mac-toggle .end-icon {
+      opacity: 1;
+      transform: rotate(180deg);
+    }
+
+    .choice-collapse {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        grid-template-rows 460ms var(--ease),
+        opacity 240ms ease,
+        visibility 460ms;
+    }
+
+    .choice-collapse > div {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .mac-group.is-open .choice-collapse {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      visibility: visible;
+      transition:
+        grid-template-rows 460ms var(--ease),
+        opacity 280ms 80ms ease,
+        visibility 0ms;
+    }
+
+    .choice-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 10px 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .choice {
+      display: grid;
+      min-height: 62px;
+      grid-template-columns: 34px minmax(0, 1fr) 14px;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 9px;
+      background: rgba(16, 16, 15, 0.045);
+      transition: background-color 180ms ease, border-color 180ms ease, transform 240ms var(--ease);
+    }
+
+    .choice:hover {
+      border-color: var(--line);
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .architecture {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--ink);
+      font-size: 0.72rem;
+      font-weight: 760;
+      letter-spacing: -0.03em;
+    }
+
+    .choice strong,
+    .choice span {
+      display: block;
+    }
+
+    .choice strong {
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .choice .choice-meta {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.66rem;
+      line-height: 1.25;
+    }
+
+    .secondary-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .secondary-link {
+      display: flex;
+      min-height: 43px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 630;
+      transition: color 180ms ease, background-color 180ms ease, transform 240ms var(--ease);
+    }
+
+    .secondary-link:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.72);
+      transform: translateY(-1px);
+    }
+
+    .fine-print {
+      margin: 16px 0 0;
+      color: rgba(16, 16, 15, 0.42);
+      font-size: 0.66rem;
+      line-height: 1.5;
+    }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        align-items: start;
+        padding: 22px 14px 28px;
+      }
+
+      .brand-image {
+        height: 152px;
+        margin-bottom: 17px;
+      }
+
+      .intro {
+        margin-bottom: 20px;
+      }
+
+      .intro-copy {
+        font-size: 0.86rem;
+      }
+
+      .platform-grid,
+      .choice-list {
+        grid-template-columns: 1fr;
+      }
+
+      .main-button,
+      .platform-grid .main-button {
+        min-height: 64px;
+      }
+
+      .choice {
+        min-height: 57px;
+      }
+
+      .secondary-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .secondary-link:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .main-button {
+        grid-template-columns: 23px minmax(0, 1fr) auto;
+        gap: 11px;
+        padding-inline: 14px;
+      }
+
+      .button-title {
+        font-size: 0.87rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="icon-web" viewBox="0 0 16 16">
+      <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855q-.215.403-.395.872c.705.157 1.472.257 2.282.287zM4.249 3.539q.214-.577.481-1.078a7 7 0 0 1 .597-.933A7 7 0 0 0 3.051 3.05q.544.277 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9 9 0 0 1-1.565-.667A6.96 6.96 0 0 0 1.018 7.5zm1.4-2.741a12.3 12.3 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332M8.5 5.09V7.5h2.99a12.3 12.3 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.6 13.6 0 0 1 7.5 10.91V8.5zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741zm-3.282 3.696q.18.469.395.872c.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a7 7 0 0 1-.598-.933 9 9 0 0 1-.481-1.079 8.4 8.4 0 0 0-1.198.49 7 7 0 0 0 2.276 1.522zm-1.383-2.964A13.4 13.4 0 0 1 3.508 8.5h-2.49a6.96 6.96 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667m6.728 2.964a7 7 0 0 0 2.275-1.521 8.4 8.4 0 0 0-1.197-.49 9 9 0 0 1-.481 1.078 7 7 0 0 1-.597.933M8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855q.216-.403.395-.872A12.6 12.6 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.96 6.96 0 0 0 14.982 8.5h-2.49a13.4 13.4 0 0 1-.437 3.008M14.982 7.5a6.96 6.96 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008zM11.27 2.461q.266.502.482 1.078a8.4 8.4 0 0 0 1.196-.49 7 7 0 0 0-2.275-1.52c.218.283.418.597.597.932m-.488 1.343a8 8 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+    </symbol>
+    <symbol id="icon-apple" viewBox="0 0 16 16">
+      <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/>
+    </symbol>
+    <symbol id="icon-windows" viewBox="0 0 16 16">
+      <path d="M6.555 1.375 0 2.237v5.45h6.555zM0 13.795l6.555.933V8.313H0zm7.278-5.4.026 6.378L16 16V8.395zM16 0 7.33 1.244v6.414H16z"/>
+    </symbol>
+    <symbol id="icon-android" viewBox="0 0 16 16">
+      <path d="m10.213 1.471.691-1.26q.069-.124-.048-.192-.128-.057-.195.058l-.7 1.27A4.8 4.8 0 0 0 8.005.941q-1.032 0-1.956.404l-.7-1.27Q5.281-.037 5.154.02q-.117.069-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.7 3.7 0 0 0 3.5 5.02h9q0-1.125-.623-2.072a4.27 4.27 0 0 0-1.664-1.476ZM6.22 3.303a.37.37 0 0 1-.267.11.35.35 0 0 1-.263-.11.37.37 0 0 1-.107-.264.37.37 0 0 1 .107-.265.35.35 0 0 1 .263-.11q.155 0 .267.11a.36.36 0 0 1 .112.265.36.36 0 0 1-.112.264m4.101 0a.35.35 0 0 1-.262.11.37.37 0 0 1-.268-.11.36.36 0 0 1-.112-.264q0-.154.112-.265a.37.37 0 0 1 .268-.11q.155 0 .262.11a.37.37 0 0 1 .107.265q0 .153-.107.264M3.5 11.77q0 .441.311.75.311.306.76.307h.758l.01 2.182q0 .414.292.703a.96.96 0 0 0 .7.288.97.97 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h1.343v2.182q0 .414.292.703a.97.97 0 0 0 .71.288.97.97 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h.76q.436 0 .749-.308.31-.307.311-.75V5.365h-9zm10.495-6.587a.98.98 0 0 0-.702.278.9.9 0 0 0-.293.685v4.063q0 .406.293.69a.97.97 0 0 0 .702.284q.42 0 .712-.284a.92.92 0 0 0 .293-.69V6.146a.9.9 0 0 0-.293-.685 1 1 0 0 0-.712-.278m-12.702.283a1 1 0 0 1 .712-.283q.41 0 .702.283a.9.9 0 0 1 .293.68v4.063a.93.93 0 0 1-.288.69.97.97 0 0 1-.707.284 1 1 0 0 1-.712-.284.92.92 0 0 1-.293-.69V6.146q0-.396.293-.68"/>
+    </symbol>
+    <symbol id="icon-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+    </symbol>
+    <symbol id="icon-folder" viewBox="0 0 16 16">
+      <path d="M.54 3.87A1.5 1.5 0 0 1 2.03 2.5h3.2c.5 0 .97.25 1.25.66l.45.67c.09.14.25.22.42.22h6.63a1.5 1.5 0 0 1 1.48 1.72l-1.1 6.5a1.5 1.5 0 0 1-1.48 1.25H2.04a1.5 1.5 0 0 1-1.5-1.5V3.87Zm1.5-.37a.5.5 0 0 0-.5.5v8.02a.5.5 0 0 0 .5.5h10.84a.5.5 0 0 0 .5-.42l1.1-6.5a.5.5 0 0 0-.5-.55H7.35c-.5 0-.97-.25-1.25-.67l-.45-.66a.5.5 0 0 0-.42-.22h-3.2Z"/>
+    </symbol>
+    <symbol id="icon-zip" viewBox="0 0 16 16">
+      <path d="M5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.11 0l-.929-.62a1 1 0 0 1-.415-1.074L5 8.438zm2 0H6v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.929-.62-.4-1.598A1 1 0 0 1 7 8.438z"/>
+      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1h-2v1h-1v1h1v1h-1v1h1v1H6V5H5V4h1V3H5V2h1V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
+    </symbol>
+    <symbol id="icon-chevron" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+    </symbol>
+    <symbol id="icon-external" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+    </symbol>
+    <symbol id="icon-download" viewBox="0 0 16 16">
+      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+    </symbol>
+  </svg>
+
+  <main class="page">
+    <section class="installer" aria-labelledby="page-title">
+      <img class="brand-image" src="./pavi.png" alt="Pavillon Noir" width="1536" height="1024">
+
+      <header class="intro">
+        <p class="eyebrow">Installer Pavillon Noir</p>
+        <h1 id="page-title">Choisissez votre version</h1>
+        <p class="intro-copy">Installez l’application ou continuez directement dans votre navigateur.</p>
+      </header>
+
+      <div class="actions">
+        <a class="main-button primary" href="https://booprojetpro-cmd.github.io/mk1/" aria-label="Rester sur la version web de Pavillon Noir">
+          <svg class="icon" aria-hidden="true"><use href="#icon-web"></use></svg>
+          <span class="button-copy">
+            <span class="button-title">Rester sur le web</span>
+            <span class="button-meta">Aucune installation nécessaire</span>
+          </span>
+          <svg class="icon end-icon" aria-hidden="true"><use href="#icon-external"></use></svg>
+        </a>
+
+        <div class="mac-group" id="mac-download">
+          <button class="main-button mac-toggle" id="mac-toggle" type="button" aria-expanded="false" aria-controls="mac-choices">
+            <svg class="icon" aria-hidden="true"><use href="#icon-apple"></use></svg>
+            <span class="button-copy">
+              <span class="button-title">Télécharger pour Mac</span>
+              <span class="button-meta">Choisissez votre processeur</span>
+            </span>
+            <svg class="icon end-icon" aria-hidden="true"><use href="#icon-chevron"></use></svg>
+          </button>
+
+          <div class="choice-collapse" id="mac-choices" aria-hidden="true" inert>
+            <div>
+              <div class="choice-list">
+                <a class="choice" href="https://github.com/booprojetpro-cmd/mk1/releases/latest/download/Pavillon.Noir-arm64.dmg">
+                  <span class="architecture">M</span>
+                  <span>
+                    <strong>Apple Silicon</strong>
+                    <span class="choice-meta">Mac M1, M2, M3 ou M4</span>
+                  </span>
+                  <svg class="icon small" aria-hidden="true"><use href="#icon-download"></use></svg>
+                </a>
+
+                <a class="choice" href="https://github.com/booprojetpro-cmd/mk1/releases/download/Mac-Intel/Pavillon.Noir-x64.dmg">
+                  <span class="architecture">i</span>
+                  <span>
+                    <strong>Intel</strong>
+                    <span class="choice-meta">Mac avec processeur Intel</span>
+                  </span>
+                  <svg class="icon small" aria-hidden="true"><use href="#icon-download"></use></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="platform-grid">
+          <a class="main-button" href="https://github.com/booprojetpro-cmd/mk1/releases/download/Windows/Pavillon-Noir-Windows-x64.exe">
+            <svg class="icon" aria-hidden="true"><use href="#icon-windows"></use></svg>
+            <span class="button-copy">
+              <span class="button-title">Télécharger pour Windows</span>
+              <span class="button-meta">Windows 64 bits · .exe</span>
+            </span>
+            <svg class="icon end-icon" aria-hidden="true"><use href="#icon-download"></use></svg>
+          </a>
+
+          <a class="main-button" href="https://github.com/booprojetpro-cmd/mk1/releases/download/Android/Pavillon-Noir.apk">
+            <svg class="icon" aria-hidden="true"><use href="#icon-android"></use></svg>
+            <span class="button-copy">
+              <span class="button-title">Télécharger pour Android</span>
+              <span class="button-meta">Installation manuelle · .apk</span>
+            </span>
+            <svg class="icon end-icon" aria-hidden="true"><use href="#icon-download"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="secondary-links" aria-label="Autres options">
+        <a class="secondary-link" href="https://github.com/booprojetpro-cmd/mk1.git" target="_blank" rel="noreferrer">
+          <svg class="icon small" aria-hidden="true"><use href="#icon-github"></use></svg>
+          <span>GitHub</span>
+        </a>
+        <a class="secondary-link" href="https://drive.google.com/drive/folders/1HSuFmq9S9f_1y7YI3Ob4B_WbNVm1d8ld?usp=share_link" target="_blank" rel="noreferrer">
+          <svg class="icon small" aria-hidden="true"><use href="#icon-folder"></use></svg>
+          <span>Google Drive</span>
+        </a>
+        <a class="secondary-link" href="https://github.com/booprojetpro-cmd/mk1/archive/refs/heads/main.zip">
+          <svg class="icon small" aria-hidden="true"><use href="#icon-zip"></use></svg>
+          <span>Version locale</span>
+        </a>
+      </nav>
+
+      <p class="fine-print">En téléchargeant l’application, vous quittez cette page pour lancer le fichier d’installation.</p>
+    </section>
+  </main>
+
+  <script>
+    const macGroup = document.querySelector('#mac-download');
+    const macToggle = document.querySelector('#mac-toggle');
+    const macChoices = document.querySelector('#mac-choices');
+
+    function setMacOpen(open) {
+      macGroup.classList.toggle('is-open', open);
+      macToggle.setAttribute('aria-expanded', String(open));
+      macChoices.setAttribute('aria-hidden', String(!open));
+      macChoices.inert = !open;
+    }
+
+    macToggle.addEventListener('click', () => {
+      setMacOpen(!macGroup.classList.contains('is-open'));
+    });
+
+    macGroup.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && macGroup.classList.contains('is-open')) {
+        setMacOpen(false);
+        macToggle.focus();
+      }
+    });
+  </script>
+</body>
+</html>
