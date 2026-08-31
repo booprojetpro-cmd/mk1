@@ -405,4 +405,13 @@ const films = [
     titre: "Woody Woodpecker",
     embed: `<iframe src="https://www.tokyvideo.com/fr/embed/711918" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/woody-woodpecker-2017?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Woody Woodpecker (2017)</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
   }
+,
+  {
+    titre: "588 rue Paradis",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/734753" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/588-rue-paradis-1992-vf-hd?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">588 rue Paradis (1992) VF HD</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  },
+  {
+    titre: "Mayrig",
+    embed: `<iframe src="https://www.tokyvideo.com/fr/embed/734756" frameborder="0" width="640" height="360" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen allowtransparency style="display:block;max-width:100%;margin:0 auto 10px"></iframe><p style="text-align:center;max-width:100%;width:640px;margin:0 auto;font-size:14px"><a href="https://www.tokyvideo.com/fr/video/mayrig-1991-vf-hd?utm_campaign=embed&utm_medium=embed-link&utm_source=embed-link" target="_blank">Mayrig (1991) VF HD</a> by <a href="https://www.tokyvideo.com/fr?utm_campaign=embed&utm_medium=embed-home&utm_source=embed-link" target="_blank">tokyvideo.com</a></p>`
+  }
 ];
